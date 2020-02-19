@@ -11,6 +11,8 @@ package com.epimorphics.lda.renderers.velocity;
 
 
 import java.io.*;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import org.apache.commons.lang.StringEscapeUtils;
@@ -233,8 +235,15 @@ implements BytesOut
 		
         for (String pathEntry: StringUtils.split( rootPath, "," )) {
             pathEntry = StringUtils.trim( pathEntry );
-            String pathURL = b.pathAsURL( pathEntry).toString();
-            roots.add( pathURL + (pathURL.endsWith( "/" ) ? "" : "/") );
+            String pathURL = null;
+            try {
+                pathURL = URLDecoder.decode(b.pathAsURL(pathEntry).toString(), StandardCharsets.UTF_8.name());
+                roots.add( pathURL + (pathURL.endsWith( "/" ) ? "" : "/") );
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace(System.err);
+                log.warn("{} ({})", e.getMessage(), e);
+                throw new VelocityRenderingException();
+            }
         }
         log.debug("rootPath '{}'", rootPath);
         log.debug("complete expanded path '{}'", roots);
