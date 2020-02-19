@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:schema="http://schema.org/"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <schema:FoodEvent rdf:about="http://www.umwd.dolnyslask.pl/semantic/id/foodEvent/Id21">
+    <rdfs:label xml:lang="pl">Jarmark Produktów Lokalnych XII Dni Obornik Sląskich</rdfs:label>
+    <schema:name xml:lang="pl">Jarmark Produktów Lokalnych XII Dni Obornik Sląskich</schema:name>
+    <schema:location>
+      <schema:Place>
+        <rdfs:label xml:lang="pl">Lokalizacja</rdfs:label>
+        <schema:description xml:lang="pl">Targowisko Rynek</schema:description>
+        <schema:address>
+          <schema:PostalAddress>
+            <schema:addressCountry xml:lang="pl">Polska</schema:addressCountry>
+            <schema:addressLocality xml:lang="pl">Oborniki Śląskie</schema:addressLocality>
+            <schema:addressLocality xml:lang="pl">Powstańców Wielkopolskich 2</schema:addressLocality>
+          </schema:PostalAddress>
+        </schema:address>
+
+        <schema:geo>
+          <schema:GeoCoordinates>
+            <schema:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.66366</schema:latitude>
+            <schema:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#float">17.92841</schema:longitude>
+          </schema:GeoCoordinates>
+        </schema:geo>
+
+      </schema:Place>
+    </schema:location>
+
+    <schema:description xml:lang="pl">Targowisko RynekJarmark cieszy sie ogromnym uznaniem wśród mieszkańców, oprócz koncertów, można skosztować swojskich wyrobów. Przez lata przewijały sie swojskie sery, ciasta pieczone przez KGW, pajda chleba ze smalcem i ogórkiem małosolnym i pierogi.</schema:description>
+    <schema:startDate rdf:datatype="http://schema.org/Date">2019-05-12</schema:startDate>
+    <schema:endDate rdf:datatype="http://schema.org/Date">2019-05-13</schema:endDate>
+    <schema:organizer>
+      <schema:Organization>
+        <schema:name xml:lang="pl">SOKiS w Bierutowie</schema:name>
+        <schema:contactPoint>
+          <schema:ContactPoint>
+            <schema:email xml:lang="pl">gckis@nowogrodziec.pl</schema:email>
+            <schema:telephone xml:lang="pl">75 731 63 98</schema:telephone>
+          </schema:ContactPoint>
+        </schema:contactPoint>
+
+        <schema:url xml:lang="pl">www.gaworzyce.com.pl</schema:url>
+        <schema:url xml:lang="pl">www.facebook.com/gminagaworzyce</schema:url>
+        <schema:member>
+          <schema:Person>
+            <schema:name xml:lang="pl">Monika Zdobylak</schema:name>
+          </schema:Person>
+        </schema:member>
+
+      </schema:Organization>
+    </schema:organizer>
+
+  </schema:FoodEvent>
+
+</rdf:RDF>

@@ -1,0 +1,58 @@
+#
+# gp for examples
+#
+
+@prefix dct:	<http://purl.org/dc/terms/> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix elda:   <http://www.epimorphics.com/vocabularies/lda#> .
+@prefix umwd:   <http://www.umwd.dolnyslask.pl/semantic/id/foodEvent/> .
+
+
+
+# informal dataset for licence testing
+
+# egc:dataset egc:gamesLicense <http://localhost:8080/standalone/licences/licence-beta-text.text> .
+
+# <http://localhost:8080/standalone/licences/licence-beta-text.text> a elda:license
+#    ; rdfs:label "per-page licence Beta"
+#    ; rdfs:comment """per-page licence Beta"""
+#    ; foaf:depiction <http://localhost:8080/standalone/velocity/images/licence-beta.png>
+#    .
+
+umwd:Id21 a schema:FoodEvent ;
+	; rdfs:label "Jarmark Produktów Lokalnych XII Dni Obornik Sląskich"@pl
+    ; schema:name "Jarmark Produktów Lokalnych XII Dni Obornik Sląskich"@pl 
+    ; schema:location [ a schema:Place; 
+						rdfs:label "Lokalizacja"@pl ; 
+						schema:description "Targowisko Rynek"@pl ;
+						schema:address [ a schema:PostalAddress ;
+										schema:addressCountry "Polska"@pl ;
+										schema:addressLocality "Oborniki Śląskie"@pl ;
+										schema:addressLocality "Powstańców Wielkopolskich 2"@pl 
+						] ;
+						schema:geo [ a schema:GeoCoordinates ;
+									schema:latitude "50.66366"^^xsd:float ;
+									schema:longitude "17.92841"^^xsd:float 
+						]
+	  ]
+	; schema:description "Targowisko RynekJarmark cieszy sie ogromnym uznaniem wśród mieszkańców, oprócz koncertów, można skosztować swojskich wyrobów. Przez lata przewijały sie swojskie sery, ciasta pieczone przez KGW, pajda chleba ze smalcem i ogórkiem małosolnym i pierogi."@pl
+	; schema:startDate "2019-05-12"^^schema:Date
+    ; schema:endDate "2019-05-13"^^schema:Date
+    ; schema:organizer [ a schema:Organization ;
+						 schema:name "SOKiS w Bierutowie"@pl ;
+						 schema:contactPoint [ a schema:ContactPoint ;
+											   schema:email "gckis@nowogrodziec.pl"@pl ; 
+											   schema:telephone "75 731 63 98"@pl
+						 ]
+						 ; schema:url "www.gaworzyce.com.pl"@pl
+                         ; schema:url "www.facebook.com/gminagaworzyce"@pl 
+                         ; schema:member [ a schema:Person ;
+                                           schema:name "Monika Zdobylak"@pl
+                           ]
+      ]
+.
