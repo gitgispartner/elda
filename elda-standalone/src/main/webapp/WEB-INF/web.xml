@@ -6,7 +6,7 @@
   <context-param>
      <param-name>com.epimorphics.api.initialSpecFile</param-name>
      <param-value>
-            again::specs/hello-again-world.ttl
+         third::specs/third-hello-world.ttl
      </param-value>
   </context-param>
   
@@ -82,6 +82,7 @@
     <url-pattern>/control/*</url-pattern>
     <url-pattern>/hello/*</url-pattern>
     <url-pattern>/again/*</url-pattern>
+    <url-pattern>/third/*</url-pattern>
     <url-pattern>/tiny/*</url-pattern>
     <url-pattern>/mini/*</url-pattern>
     <url-pattern>/full/*</url-pattern>
@@ -103,7 +104,8 @@
   <servlet-mapping>
     <servlet-name>default</servlet-name>
 <!-- <url-pattern>/*</url-pattern> -->
-    
+
+    <url-pattern>/third/*</url-pattern>
     <url-pattern>/again/*</url-pattern>
     <url-pattern>/hello/*</url-pattern>
     <url-pattern>/mini/*</url-pattern>

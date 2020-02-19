@@ -1,0 +1,97 @@
+# minimal operational config
+
+# This LDA description is a "getting started" configuration.
+# Replace all references to the SPARQL endpoint
+#
+#	http://education.data.gov.uk/sparql/education/query
+#
+# with your SPARQL endpoint of interest. 
+#
+# The /anything endpoint will display some (10) items from the SPARQL
+# endpoint that have an rdf:type property. 
+#
+# The /about?resource=URI endpoint will display information about the
+# resource with the given URI from that SPARQL endpoint.
+#
+# The /mentions?resource=URI will display information about 
+# resources that 'mention' URI, ie, are objects of some property 
+# of that item.
+#
+
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spec:	<http://environment.data.gov.uk/api-config#> .
+@prefix api:    <http://purl.org/linked-data/api/vocab#> .
+@prefix elda:   <http://www.epimorphics.com/vocabularies/lda#> .
+
+# "empty" authorisation for SPARQL host
+#
+<http://localhost:8080/fuseki/gp_data_01/query>
+		  elda:authKey "grimdark"
+		; elda:authFile "taods-and-robins"
+.
+
+spec:minimal a api:API
+	; api:base "/elda-common"
+	; rdfs:label "a minimal demonstration API"
+	 ; api:sparqlEndpoint <http://localhost:8080/fuseki/xml_rdf/query>
+	# ; api:sparqlEndpoint <https://environment.data.gov.uk/sparql/bwq/query>
+#    ; api:sparqlEndpoint <local:data/gp-data_01.ttl>
+	# ; api:sparqlEndpoint <local:data/example-data.ttl>
+    ; api:defaultViewer api:labelledDescribeViewer
+	; api:endpoint 
+		spec:about
+		, spec:anything
+		, spec:mentions
+	; api:defaultFormatter [a elda:VelocityFormatter
+								; api:name "html"
+								; elda:className "com.epimorphics.lda.renderers.VelocityRendererFactory"
+								; api:mimeType "text/html"
+						    ]
+
+#	; api:variable [api:name "velocityTemplate"; api:value "http://localhost:8081/elda-assets/velocity/index.vm"]
+	; api:variable [api:name "_velocityPath"; api:value "../elda-assets/velocity"]
+	; api:variable [api:name  "_velocityRoot"; api:value "velocity/"] ;
+    ; api:variable [api:name "_resourceRoot"; api:value "http://localhost:8081/elda-assets/"]
+  .
+
+
+
+	
+#
+# Describe a generic 'thing' as an example of an itemEndpoint.
+#
+spec:about a api:ItemEndpoint
+	; api:uriTemplate     "/about?resource={uri}"
+    ; rdfs:comment        "A generic item endpoint API for asking about a specific thing by 'uri'."
+    ; api:itemTemplate    "{uri}"
+    ; api:viewer          api:basicViewer, api:describeViewer, api:labelledDescribeViewer
+    ; api:defaultViewer   api:describeViewer
+    .
+
+#
+# List 'anything' endpoint
+#
+spec:anything a api:ListEndpoint
+    ; api:name            	"anything" 
+    ; rdfs:comment        	"A generic listing endpoint for listing things based solely on URI based filter parameters"@en
+    ; api:uriTemplate		"/anything"
+    ; api:selector			[api:where   " ?item a ?v1 . FILTER (!isBlank(?item)) "]
+    ; api:exampleRequestPath  "/anything"
+###
+### no selector - defers everything to URI params
+###
+    ; api:viewer api:describeViewer, api:basicViewer, api:labelledDescribeViewer
+    ; api:defaultViewer   api:describeViewer
+     .
+
+#
+# List things related to a 'mentions' as an example of a ListEndpoint.
+#
+spec:mentions a api:ListEndpoint
+	; api:uriTemplate     "/mentions?resource={uri}"
+    ; api:variable [api:name "uri"; api:type rdfs:Resource]
+	; api:selector [api:where "?item ?p ?uri . FILTER (!isBlank(?item))"]
+	; api:viewer api:basicViewer, api:describeViewer, api:labelledDescribeViewer
+	; api:defaultViewer   api:describeViewer;
+    .
+

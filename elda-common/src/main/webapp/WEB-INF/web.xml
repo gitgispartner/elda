@@ -9,7 +9,10 @@
 
     <context-param>
        <param-name>com.epimorphics.api.initialSpecFile</param-name>
-        <param-value>/etc/elda/conf.d/{APP}/*.ttl</param-value>
+        <!--<param-value>/etc/elda/conf.d/{APP}/*.ttl</param-value>-->
+        <!--       <param-value>spec::specs/hello-gp.ttl</param-value>-->
+        <param-value>spec::specs/hello-gp_velo.ttl</param-value>
+        <!--        <param-value>spec::specs/third-hello-game.ttl</param-value>-->
     </context-param>
 
   <!-- ==================================================================== -->
@@ -34,7 +37,8 @@
     <filter-class>com.epimorphics.lda.support.LogRequestFilter</filter-class>
     <init-param>
         <param-name>com.epimorphics.lda.logging.ignoreIfMatches</param-name>
-        <param-value>.*/lda-assets/.*</param-value>
+        <!--<param-value>.*/lda-assets/.*</param-value>-->
+        <param-value>^/(elda-common/(scripts|css|images|velocity)/.*)?</param-value>
     </init-param>
   </filter>
 
@@ -95,7 +99,8 @@
 
   <error-page>
     <error-code>404</error-code>
-    <location>/_error_pages/404.html</location>
+      <!--<location>/_error_pages/404.html</location>-->
+      <location>/_error_pages/velocity/404.html</location>
   </error-page>
 
 </web-app>
